@@ -1,0 +1,17 @@
+2025-05-14 15:25:12,001 - INFO - Data Processing Initialized...
+2025-05-14 15:25:12,215 - INFO - Data loaded sucesfully..
+2025-05-14 15:25:12,491 - INFO - Basic Processing Done..
+2025-05-14 15:25:12,685 - INFO - Selected features are : ['Healthcare_Costs', 'Tumor_Size_mm', 'Treatment_Type', 'Diabetes', 'Mortality_Rate_per_100K']
+2025-05-14 15:25:12,687 - INFO - Feature selection done..
+2025-05-14 15:25:12,762 - INFO - splitting and Scaling Done..
+2025-05-14 15:25:12,773 - INFO - Alk the Saving Part is Done...
+2025-05-14 15:25:12,774 - INFO - Data Processing Pipline execusted sucesfuly....
+2025-05-14 15:50:18,542 - INFO - Model Training Initialization...
+2025-05-14 15:50:18,553 - INFO - Data loaded for Model
+2025-05-14 15:50:18,607 - INFO - Sample weights calculated.
+2025-05-14 15:50:18,607 - INFO - Starting model training with sample weights...
+2025-05-14 15:50:43,062 - INFO - Model training with sample weights completed.
+2025-05-14 15:50:43,067 - INFO - Model trained and saved successfully.
+2025-05-14 15:50:43,387 - INFO - Accuracy: 0.4976; Precision: 0.5200; Recall: 0.4976; F1-Score: 0.5026
+2025-05-14 15:50:43,488 - INFO - ROC-AUC Score: 0.4981
+2025-05-14 15:50:43,488 - INFO - Model evaluation done.

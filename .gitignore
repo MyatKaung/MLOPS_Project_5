@@ -1,0 +1,6 @@
+venv/
+artifacts/
+mlruns/
+build/
+dist/
+*.egg-info/
