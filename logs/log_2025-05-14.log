@@ -15,3 +15,12 @@
 2025-05-14 15:50:43,387 - INFO - Accuracy: 0.4976; Precision: 0.5200; Recall: 0.4976; F1-Score: 0.5026
 2025-05-14 15:50:43,488 - INFO - ROC-AUC Score: 0.4981
 2025-05-14 15:50:43,488 - INFO - Model evaluation done.
+2025-05-14 16:09:15,320 - INFO - Model Training Initialization...
+2025-05-14 16:09:15,336 - INFO - Data loaded for Model
+2025-05-14 16:09:15,398 - INFO - Sample weights calculated.
+2025-05-14 16:09:15,398 - INFO - Starting model training with sample weights...
+2025-05-14 16:09:39,789 - INFO - Model training with sample weights completed.
+2025-05-14 16:09:39,793 - INFO - Model trained and saved successfully.
+2025-05-14 16:09:41,296 - INFO - Accuracy: 0.4976; Precision: 0.5200; Recall: 0.4976; F1-Score: 0.5026
+2025-05-14 16:09:41,720 - INFO - ROC-AUC Score: 0.4981
+2025-05-14 16:09:41,720 - INFO - Model evaluation done.

@@ -6,3 +6,10 @@ dist/
 *.egg-info/
 .DS_Store
 logs/
+
+
+export MLFLOW_TRACKING_URI=https://dagshub.com/kmyat3116/MLOPS_Project_5.mlflow
+
+export MLFLOW_TRACKING_USERNAME=kmyat3116
+
+export MLFLOW_TRACKING_PASSWORD=3ae93ab8046a6a8521910811cf5a2b10b0dc2e8f

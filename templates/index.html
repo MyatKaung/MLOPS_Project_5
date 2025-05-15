@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Colorectal Cancer Prediction Tool</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --purple: #5c4fcf;
+      --purple-light: #6e5efc;
+      --gray-bg: #f4f5f7;
+      --gray-border: #e4e4e7;
+      --gray-text: #9fa2b4;
+      --dark-text: #252733;
+      --white: #ffffff;
+      --cancel-bg: #e0e0e0;
+      --cancel-text: #555;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
+    body {
+      display: flex;
+      height: 100vh;
+      background: var(--gray-bg);
+    }
+    .sidebar {
+      width: 320px;
+      padding: 40px;
+      background: var(--purple);
+      color: var(--white);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .sidebar h1 {
+      font-size: 2.25rem;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    .sidebar p {
+      line-height: 1.5;
+      opacity: 0.9;
+      margin-bottom: 2rem;
+    }
+    .sidebar ul {
+      list-style: none;
+    }
+    .sidebar ul li {
+      position: relative;
+      padding-left: 1.25rem;
+      margin-bottom: 1rem;
+    }
+    .sidebar ul li::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      top: 0.15rem;
+      font-size: 0.75rem;
+      color: var(--white);
+    }
+    .sidebar .note {
+      font-size: 0.75rem;
+      line-height: 1.4;
+      opacity: 0.7;
+      margin-top: 2rem;
+    }
+    .main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    .form-card {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 2.5rem;
+      width: 100%;
+      max-width: 480px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    }
+    .form-card h2 {
+      color: var(--dark-text);
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+    .form-group label {
+      display: block;
+      font-weight: 500;
+      color: var(--dark-text);
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+    }
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--gray-border);
+      border-radius: 8px;
+      font-size: 1rem;
+      color: var(--dark-text);
+    }
+    .form-group input::placeholder {
+      color: var(--gray-text);
+    }
+    .toggle-group {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+    }
+    .toggle-group span {
+      font-weight: 500;
+      color: var(--dark-text);
+    }
+    .switch {
+      position: relative;
+      width: 42px;
+      height: 22px;
+    }
+    .switch input {
+      opacity: 0;
+      width: 0; height: 0;
+    }
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      inset: 0;
+      background: #ccc;
+      border-radius: 22px;
+      transition: .3s;
+    }
+    .slider::before {
+      content: '';
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      left: 2px;
+      bottom: 2px;
+      background: var(--white);
+      border-radius: 50%;
+      transition: .3s;
+    }
+    .switch input:checked + .slider {
+      background: var(--purple);
+    }
+    .switch input:checked + .slider::before {
+      transform: translateX(20px);
+    }
+    .button-group {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+    }
+    .submit-btn {
+      flex: 1;
+      padding: 0.85rem;
+      background: var(--purple);
+      color: var(--white);
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .submit-btn svg {
+      margin-right: 0.5rem;
+    }
+    .submit-btn:hover {
+      background: var(--purple-light);
+    }
+    .cancel-btn {
+      flex: 1;
+      padding: 0.85rem;
+      background: var(--cancel-bg);
+      color: var(--cancel-text);
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+    }
+    .cancel-btn:hover {
+      background: #ccc;
+    }
+    .result {
+      margin-top: 1.5rem;
+      text-align: center;
+      font-size: 1.1rem;
+      color: var(--dark-text);
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+  <aside class="sidebar">
+    <div>
+      <h1>Colorectal Cancer<br>Prediction Tool</h1>
+      <p>Estimate patient outcomes based on clinical data.</p>
+      <ul>
+        <li>Enter patient clinical data</li>
+        <li>Select treatment type</li>
+        <li>Indicate diabetes status</li>
+        <li>Click “Generate Prediction”</li>
+      </ul>
+    </div>
+    <p class="note">Note: Always consult medical professionals for final decisions.</p>
+  </aside>
+
+  <main class="main">
+    <div class="form-card">
+      <h2>Patient Data Input</h2>
+      <form action="/predict" method="post">
+        <div class="form-group">
+          <label for="healthcare_costs">Healthcare Costs ($)</label>
+          <input
+            type="number" step="0.01"
+            id="healthcare_costs" name="healthcare_costs"
+            placeholder="e.g. 10000"
+            required
+            value="{{ request.form.healthcare_costs or '' }}"
+          >
+        </div>
+        <div class="form-group">
+          <label for="tumor_size">Tumor Size (mm)</label>
+          <input
+            type="number" step="0.1"
+            id="tumor_size" name="tumor_size"
+            placeholder="e.g. 25.5"
+            required
+            value="{{ request.form.tumor_size or '' }}"
+          >
+        </div>
+        <div class="form-group">
+          <label for="mortality_rate">Mortality Rate (per 100K)</label>
+          <input
+            type="number" step="0.1"
+            id="mortality_rate" name="mortality_rate"
+            placeholder="e.g. 14.2"
+            required
+            value="{{ request.form.mortality_rate or '' }}"
+          >
+        </div>
+        <div class="form-group">
+          <label for="treatment_type">Treatment Type</label>
+          <select id="treatment_type" name="treatment_type" required>
+            <option value="">Select treatment</option>
+            <option value="surgery"   {% if request.form.treatment_type=='surgery'   %}selected{% endif %}>Surgery</option>
+            <option value="chemo"     {% if request.form.treatment_type=='chemo'     %}selected{% endif %}>Chemotherapy</option>
+            <option value="radiation" {% if request.form.treatment_type=='radiation' %}selected{% endif %}>Radiation</option>
+          </select>
+        </div>
+        <div class="toggle-group">
+          <span>Diabetes Status</span>
+          <label class="switch">
+            <input
+              type="checkbox"
+              name="diabetes"
+              value="1"
+              {% if request.form.get('diabetes') %}checked{% endif %}
+            >
+            <span class="slider"></span>
+          </label>
+        </div>
+
+        <div class="button-group">
+          <button type="submit" class="submit-btn">
+            <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+              <path d="M10 1.5H6a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1z"/>
+              <path d="M3.5 2A1.5 1.5 0 0 0 2 3.5v10A1.5 1.5 0 0 0 3.5 15h9A1.5 1.5 0 0 0 14 13.5v-10A1.5 1.5 0 0 0 12.5 2h-2a.5.5 0 0 1 0-1h2A2.5 2.5 0 0 1 15 3.5v10A2.5 2.5 0 0 1 12.5 16h-9A2.5 2.5 0 0 1 1 13.5v-10A2.5 2.5 0 0 1 3.5 1h2a.5.5 0 0 1 0 1h-2z"/>
+            </svg>
+            Generate Prediction
+          </button>
+          <button
+            type="button"
+            class="cancel-btn"
+            onclick="window.location.href='/'"
+          >
+            Cancel
+          </button>
+        </div>
+      </form>
+
+      {% if prediction is not none %}
+        <div class="result">Prediction: {{ prediction }}</div>
+      {% endif %}
+    </div>
+  </main>
+</body>
+</html>
+
