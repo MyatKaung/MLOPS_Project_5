@@ -76,6 +76,11 @@ The system will:
 - Kubeflow Pipelines
 - GitHub
 
+## Sample UI
+
+![Mlflow Tracking UI](images/ui.png)
+*Sample UI*
+
 ---
 
 ## 🚀 Future Scope
